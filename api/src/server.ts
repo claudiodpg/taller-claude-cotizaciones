@@ -61,12 +61,14 @@ export function buildApp(db: DB): FastifyInstance {
     }
 
     // -------------------------------------------------------------------------
-    // FALLO PLANTADO (IDOR / BOLA · OWASP A01) — cp-04/cp-05.
-    // Se cambia el estado usando SOLO el :id de la URL, sin verificar que la
-    // cotizacion pertenezca al tenant de la peticion. Cualquier equipo puede
-    // mover (y cerrar) cotizaciones ajenas conociendo su id.
-    // El fix (verificar ownership) llega en cp-06.
+    // FIX del IDOR / BOLA (OWASP A01) — cp-06.
+    // Verificar ownership ANTES de mutar: solo el tenant dueño puede cambiar el
+    // estado de la cotizacion. Antes (cp-04/cp-05) faltaba esta comprobacion y
+    // cualquier equipo podia mover cotizaciones ajenas por su :id.
     // -------------------------------------------------------------------------
+    if (c.tenant !== tenantDe(req)) {
+      return reply.code(403).send({ error: 'prohibido', mensaje: 'La cotizacion no pertenece a tu equipo' });
+    }
 
     const destino = cuerpo.estado;
     if (!esEstado(destino)) {
