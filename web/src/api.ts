@@ -41,7 +41,18 @@ async function pedir<T>(ruta: string, tenant: string, init?: RequestInit): Promi
   return res.json() as Promise<T>;
 }
 
+export interface CambioEstado {
+  estado: Estado;
+  fechaSeguimiento?: string;
+  resultado?: string;
+}
+
 export const api = {
   listar: (tenant: string) => pedir<Cotizacion[]>('/cotizaciones', tenant),
   obtener: (tenant: string, id: number) => pedir<Cotizacion>(`/cotizaciones/${id}`, tenant),
+  cambiarEstado: (tenant: string, id: number, cambio: CambioEstado) =>
+    pedir<Cotizacion>(`/cotizaciones/${id}/estado`, tenant, {
+      method: 'PATCH',
+      body: JSON.stringify(cambio),
+    }),
 };

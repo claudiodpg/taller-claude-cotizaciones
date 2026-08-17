@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { api, type Cotizacion, type Estado } from './api.js';
+import { api, type CambioEstado, type Cotizacion, type Estado } from './api.js';
 
 const TENANTS = ['ventas-norte', 'ventas-sur'];
 
@@ -10,6 +10,25 @@ const ETIQUETA_ESTADO: Record<Estado, string> = {
   seguimiento: 'Seguimiento',
   aceptada: 'Aceptada',
   rechazada: 'Rechazada',
+};
+
+interface Accion {
+  estado: Estado;
+  label: string;
+  tono?: 'danger' | 'secondary';
+}
+
+// Siguientes acciones segun el estado actual (refleja la maquina de estados del backend).
+const SIGUIENTES: Record<Estado, Accion[]> = {
+  recibida: [{ estado: 'en_preparacion', label: 'Preparar' }],
+  en_preparacion: [{ estado: 'enviada', label: 'Enviar' }],
+  enviada: [{ estado: 'seguimiento', label: 'Registrar seguimiento' }],
+  seguimiento: [
+    { estado: 'aceptada', label: 'Aceptar' },
+    { estado: 'rechazada', label: 'Rechazar', tono: 'danger' },
+  ],
+  aceptada: [],
+  rechazada: [],
 };
 
 function Badge({ estado }: { estado: Estado }) {
@@ -29,6 +48,7 @@ export function App() {
   const [cotizaciones, setCotizaciones] = useState<Cotizacion[]>([]);
   const [selId, setSelId] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   async function recargar(t: string) {
     try {
@@ -46,6 +66,31 @@ export function App() {
     void recargar(tenant);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tenant]);
+
+  async function cambiar(id: number, estado: Estado) {
+    try {
+      setBusy(true);
+      setError(null);
+      const cambio: CambioEstado = { estado };
+      if (estado === 'seguimiento') {
+        cambio.fechaSeguimiento = new Date().toISOString().slice(0, 10);
+      }
+      if (estado === 'aceptada' || estado === 'rechazada') {
+        const motivo = window.prompt(
+          estado === 'aceptada' ? 'Motivo / nota de aceptacion:' : 'Motivo de rechazo:',
+          '',
+        );
+        if (motivo === null) return; // cancelado
+        cambio.resultado = motivo || (estado === 'aceptada' ? 'Aceptada' : 'Rechazada');
+      }
+      await api.cambiarEstado(tenant, id, cambio);
+      await recargar(tenant);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy(false);
+    }
+  }
 
   const sel = cotizaciones.find((c) => c.id === selId) ?? null;
 
@@ -96,14 +141,23 @@ export function App() {
 
         <section className="panel" aria-label="Detalle de la cotizacion">
           {!sel && <p className="empty detail">Selecciona una cotizacion.</p>}
-          {sel && <Detalle c={sel} />}
+          {sel && <Detalle c={sel} busy={busy} onCambiar={cambiar} />}
         </section>
       </main>
     </>
   );
 }
 
-function Detalle({ c }: { c: Cotizacion }) {
+function Detalle({
+  c,
+  busy,
+  onCambiar,
+}: {
+  c: Cotizacion;
+  busy: boolean;
+  onCambiar: (id: number, estado: Estado) => void;
+}) {
+  const acciones = SIGUIENTES[c.estado];
   return (
     <div className="detail">
       <h2>{c.cliente}</h2>
@@ -160,6 +214,23 @@ function Detalle({ c }: { c: Cotizacion }) {
           </tr>
         </tfoot>
       </table>
+
+      {acciones.length > 0 ? (
+        <div className="actions">
+          {acciones.map((a) => (
+            <button
+              key={a.estado}
+              className={`btn ${a.tono === 'danger' ? 'danger' : a.estado === 'aceptada' ? '' : 'secondary'}`}
+              disabled={busy}
+              onClick={() => onCambiar(c.id, a.estado)}
+            >
+              {a.label}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <p className="hint">Estado terminal: no hay mas transiciones.</p>
+      )}
     </div>
   );
 }

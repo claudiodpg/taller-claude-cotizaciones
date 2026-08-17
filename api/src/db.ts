@@ -45,7 +45,11 @@ export function migrar(db: DB): void {
   `);
 }
 
-/** Borra todo el contenido (usado por el seed para re-sembrar de cero). */
+/** Borra todo el contenido y reinicia los ids (seed determinista: siempre 1..N). */
 export function limpiar(db: DB): void {
-  db.exec('DELETE FROM cierres; DELETE FROM cotizaciones;');
+  db.exec(`
+    DELETE FROM cierres;
+    DELETE FROM cotizaciones;
+    DELETE FROM sqlite_sequence WHERE name IN ('cotizaciones', 'cierres');
+  `);
 }
