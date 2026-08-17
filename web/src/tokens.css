@@ -1,0 +1,39 @@
+/* Design tokens (CSS variables). Un solo lugar para color, tipografia, espacio y radios.
+   La UI consume tokens, no valores sueltos: eso permite iterar el look sin tocar componentes. */
+:root {
+  /* Color base */
+  --c-bg: #f6f7f9;
+  --c-surface: #ffffff;
+  --c-border: #e3e6ea;
+  --c-text: #1b2530;
+  --c-text-muted: #5c6b7a;
+  --c-primary: #2f5bd6;
+  --c-primary-ink: #ffffff;
+  --c-focus: #1b3a8f;
+
+  /* Estados (color + se acompaña SIEMPRE de texto, no solo color) */
+  --e-recibida-bg: #eef1f4;      --e-recibida-fg: #46525f;
+  --e-en_preparacion-bg: #fff4d6; --e-en_preparacion-fg: #7a5a00;
+  --e-enviada-bg: #dbe8ff;        --e-enviada-fg: #1c4fb3;
+  --e-seguimiento-bg: #e6e0ff;    --e-seguimiento-fg: #4b2fb0;
+  --e-aceptada-bg: #d8f3e3;       --e-aceptada-fg: #10693f;
+  --e-rechazada-bg: #fbe0e0;      --e-rechazada-fg: #a02222;
+
+  /* Tipografia */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fs-sm: 0.82rem;
+  --fs-base: 0.95rem;
+  --fs-lg: 1.15rem;
+  --fs-xl: 1.5rem;
+
+  /* Espacio y forma */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 4px 12px rgba(16, 24, 40, 0.05);
+}
