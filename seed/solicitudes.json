@@ -1,0 +1,105 @@
+[
+  {
+    "tenant": "ventas-norte",
+    "cliente": "  Ferreteria El Tornillo  ",
+    "contacto": "Marta Ruiz <marta@eltornillo.pe>",
+    "canal": "Formulario Web",
+    "necesidad": "Reposicion de brocas y discos de corte para taller.",
+    "items": [
+      { "producto": "Broca HSS 6mm", "cantidad": "20", "precio": "3.5" },
+      { "producto": "Disco corte 4.5\"", "cantidad": "40", "precio": "2.2" }
+    ],
+    "fecha": "2026-08-10",
+    "observaciones": "Urgente, la necesita para el lunes."
+  },
+  {
+    "tenant": "ventas-norte",
+    "cliente": "Panaderia La Espiga",
+    "contacto": "Jorge Perez",
+    "canal": "formulario",
+    "necesidad": "Cotizar horno rotativo de segunda mano.",
+    "items": [
+      { "producto": "Horno rotativo 10 bandejas", "cantidad": 1, "precio": 4200 }
+    ],
+    "fecha": "2026-08-11",
+    "observaciones": null
+  },
+  {
+    "tenant": "ventas-norte",
+    "cliente": "Clinica Dental Sonrisa",
+    "contacto": "recepcion@sonrisa.pe",
+    "canal": "IMPORT-JSON",
+    "necesidad": "Insumos descartables mensuales.",
+    "items": [
+      { "producto": "Guantes nitrilo caja", "cantidad": "15", "precio": "12.9" },
+      { "producto": "Mascarilla quirurgica caja", "cantidad": "10", "precio": "8.5" },
+      { "producto": "Eyector saliva bolsa", "cantidad": "5", "precio": "6" }
+    ],
+    "fecha": "2026-08-12",
+    "observaciones": "Pago a 30 dias."
+  },
+  {
+    "tenant": "ventas-norte",
+    "cliente": "Estudio Contable Andes",
+    "contacto": "  ",
+    "canal": "csv",
+    "necesidad": "Sillas ergonomicas para 4 puestos.",
+    "items": [
+      { "producto": "Silla ergonomica malla", "cantidad": "4", "precio": "185" }
+    ],
+    "fecha": "2026-08-12",
+    "observaciones": ""
+  },
+  {
+    "tenant": "ventas-sur",
+    "cliente": "Restaurante El Muelle",
+    "contacto": "Ana Torres +51 999 111 222",
+    "canal": "Formulario Web",
+    "necesidad": "Vajilla reforzada para salon.",
+    "items": [
+      { "producto": "Plato playo 26cm", "cantidad": "60", "precio": "4.8" },
+      { "producto": "Vaso vidrio templado", "cantidad": "120", "precio": "2.1" }
+    ],
+    "fecha": "2026-08-13",
+    "observaciones": "Preguntar por descuento por volumen."
+  },
+  {
+    "tenant": "ventas-sur",
+    "cliente": "Gimnasio Fuerza Total",
+    "contacto": "admin@fuerzatotal.pe",
+    "canal": "import-csv",
+    "necesidad": "Mancuernas y colchonetas.",
+    "items": [
+      { "producto": "Mancuerna 5kg par", "cantidad": "10", "precio": "38" },
+      { "producto": "Colchoneta 10mm", "cantidad": "20", "precio": "15.5" }
+    ],
+    "fecha": "2026-08-14",
+    "observaciones": "Entrega en dos tandas."
+  },
+  {
+    "tenant": "ventas-sur",
+    "cliente": "  Libreria Kapital ",
+    "contacto": "Luis Mendoza",
+    "canal": "IMPORT-JSON",
+    "necesidad": "Utiles escolares campana marzo.",
+    "items": [
+      { "producto": "Cuaderno A4 100h", "cantidad": "200", "precio": "2.9" },
+      { "producto": "Lapicero azul caja", "cantidad": "30", "precio": "9.5" }
+    ],
+    "fecha": "2026-08-15",
+    "observaciones": "Confirmar stock antes de cotizar."
+  },
+  {
+    "tenant": "ventas-sur",
+    "cliente": "Taller Mecanico RPM",
+    "contacto": "rpm.taller@gmail.com",
+    "canal": "otro-canal-raro",
+    "necesidad": "Aceite y filtros surtidos.",
+    "items": [
+      { "producto": "Aceite 15W40 balde", "cantidad": "8", "precio": "62" },
+      { "producto": "Filtro aceite surtido", "cantidad": "25", "precio": "7.4" }
+    ],
+    "fecha": "2026-08-16",
+    "observaciones": "Cliente recurrente."
+  }
+]
