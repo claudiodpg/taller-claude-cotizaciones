@@ -24,10 +24,10 @@ npm run dev
 Con el servidor corriendo, abre la landing:
 
 ```bat
-start http://localhost:3000
+start http://localhost:9777
 ```
 
-`localhost` es tu propia maquina: el servidor corre en tu PC y `localhost:3000`
+`localhost` es tu propia maquina: el servidor corre en tu PC y `localhost:9777`
 es la direccion para hablar con el, sin salir a internet.
 
 Ahora:
@@ -37,7 +37,7 @@ Ahora:
 2. Abre el **panel** del equipo:
 
    ```bat
-   start http://localhost:3000/panel?usuario=ana
+   start http://localhost:9777/panel?usuario=ana
    ```
 
    Usa el selector de arriba para cambiar entre **Ana** y **Beto**. Cada uno ve

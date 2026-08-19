@@ -1,5 +1,5 @@
 // Servidor del mini-lab. Solo el modulo http nativo de Node: CERO dependencias
-// en runtime. Sirve public/ y expone las rutas del taller. Puerto 3000.
+// en runtime. Sirve public/ y expone las rutas del taller. Puerto 9777.
 //
 // NOTA DEL TALLER: /contacto/:id y /contacto/:id/contactado NO verifican que el
 // contacto sea del usuario elegido en el panel. Esa es la falla plantada (IDOR)
@@ -23,7 +23,7 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC = join(__dirname, "public");
-const PUERTO = process.env.PORT || 3000;
+const PUERTO = process.env.PORT || 9777;
 
 const TIPOS = {
   ".html": "text/html; charset=utf-8",
