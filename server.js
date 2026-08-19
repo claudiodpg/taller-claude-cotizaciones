@@ -1,9 +1,5 @@
 // Servidor del mini-lab. Solo el modulo http nativo de Node: CERO dependencias
 // en runtime. Sirve public/ y expone las rutas del taller. Puerto 9777.
-//
-// NOTA DEL TALLER: /contacto/:id y /contacto/:id/contactado NO verifican que el
-// contacto sea del usuario elegido en el panel. Esa es la falla plantada (IDOR)
-// que se caza y corrige en la seccion de seguridad. No la "arregles" aqui.
 
 import { createServer } from "node:http";
 import { readFile } from "node:fs/promises";
@@ -250,7 +246,6 @@ const servidor = createServer(async (req, res) => {
   }
 
   // POST /contacto/:id/contactado -> marca contactado
-  // FALLA PLANTADA (IDOR): no verifica que el contacto sea del usuario elegido.
   let m = ruta.match(/^\/contacto\/(\d+)\/contactado$/);
   if (req.method === "POST" && m) {
     const id = Number(m[1]);
@@ -260,13 +255,12 @@ const servidor = createServer(async (req, res) => {
     const lista = cargar();
     const c = buscarPorId(lista, id);
     if (!c) return html(res, 404, pagina("No encontrado", "<h1>404</h1><p>No existe ese contacto.</p>"));
-    persistir(marcarContactado(lista, id)); // <- sin verificar c.dueno === usuario
+    persistir(marcarContactado(lista, id));
     res.writeHead(303, { location: `/panel?usuario=${encodeURIComponent(usuario)}` });
     return res.end();
   }
 
   // GET /contacto/:id -> detalle
-  // FALLA PLANTADA (IDOR): muestra el contacto sea o no del usuario elegido.
   m = ruta.match(/^\/contacto\/(\d+)$/);
   if (req.method === "GET" && m) {
     const id = Number(m[1]);
@@ -274,7 +268,7 @@ const servidor = createServer(async (req, res) => {
     if (!USUARIOS.includes(usuario)) usuario = USUARIOS[0];
     const c = buscarPorId(cargar(), id);
     if (!c) return html(res, 404, pagina("No encontrado", "<h1>404</h1><p>No existe ese contacto.</p>"));
-    return html(res, 200, paginaDetalle(usuario, c)); // <- sin verificar c.dueno === usuario
+    return html(res, 200, paginaDetalle(usuario, c));
   }
 
   // resto: archivos estaticos de public/
