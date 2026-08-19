@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Lucia Fernandez",
+    "correo": "lucia.fernandez@example.com",
+    "mensaje": "Quiero cotizar una reforma de cocina para mi departamento.",
+    "dueno": "ana",
+    "contactado": false,
+    "creado": "2026-08-10T14:02:00.000Z"
+  },
+  {
+    "id": 2,
+    "nombre": "Marcos Pena",
+    "correo": "marcos.pena@example.com",
+    "mensaje": "Necesito precio para pintar dos oficinas de 40m2.",
+    "dueno": "beto",
+    "contactado": true,
+    "creado": "2026-08-10T15:20:00.000Z"
+  },
+  {
+    "id": 3,
+    "nombre": "Sofia Rojas",
+    "correo": "sofia.rojas@example.com",
+    "mensaje": "Cotizacion de mobiliario para una sala de espera.",
+    "dueno": "ana",
+    "contactado": false,
+    "creado": "2026-08-11T09:45:00.000Z"
+  },
+  {
+    "id": 4,
+    "nombre": "Diego Alvarez",
+    "correo": "diego.alvarez@example.com",
+    "mensaje": "Instalacion electrica para un local nuevo, urgente.",
+    "dueno": "beto",
+    "contactado": false,
+    "creado": "2026-08-11T11:10:00.000Z"
+  },
+  {
+    "id": 5,
+    "nombre": "Valentina Cruz",
+    "correo": "valentina.cruz@example.com",
+    "mensaje": "Presupuesto para cambiar el piso de un consultorio.",
+    "dueno": "ana",
+    "contactado": false,
+    "creado": "2026-08-12T16:30:00.000Z"
+  },
+  {
+    "id": 6,
+    "nombre": "Tomas Herrera",
+    "correo": "tomas.herrera@example.com",
+    "mensaje": "Quiero cotizar mantenimiento mensual de jardines.",
+    "dueno": "beto",
+    "contactado": true,
+    "creado": "2026-08-12T18:05:00.000Z"
+  },
+  {
+    "id": 7,
+    "nombre": "Camila Duarte",
+    "correo": "camila.duarte@example.com",
+    "mensaje": "Necesito una cotizacion confidencial para una obra grande.",
+    "dueno": "beto",
+    "contactado": false,
+    "creado": "2026-08-13T10:15:00.000Z"
+  },
+  {
+    "id": 8,
+    "nombre": "Nicolas Vera",
+    "correo": "nicolas.vera@example.com",
+    "mensaje": "Precio de aire acondicionado para tres ambientes.",
+    "dueno": "ana",
+    "contactado": false,
+    "creado": "2026-08-13T12:40:00.000Z"
+  }
+]

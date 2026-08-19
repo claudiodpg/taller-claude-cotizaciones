@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+  LANDING PLACEHOLDER (honesta).
+  Esta es una landing minima y sobria a proposito.
+  >>> Reemplaza esta landing por la que generaste en el Ejercicio 5. <<<
+  Lo unico que NO debes romper es el formulario: hace POST a /contacto
+  con los campos nombre, correo y mensaje.
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cotiza</title>
+  <style>
+    :root {
+      --tinta: #1f2733;
+      --cuerpo: #4a5563;
+      --borde: #d9dee5;
+      --fondo: #f6f7f9;
+      --superficie: #ffffff;
+      --marca: #1f5f4a;
+      --marca-borde: #17493a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--cuerpo);
+      background: var(--fondo);
+      line-height: 1.5;
+    }
+    .contenedor { max-width: 720px; margin: 0 auto; padding: 48px 20px 64px; }
+    header nav {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 720px; margin: 0 auto; padding: 16px 20px;
+      border-bottom: 1px solid var(--borde);
+    }
+    .logo { font-weight: 700; color: var(--tinta); letter-spacing: -0.01em; }
+    .logo span { color: var(--marca); }
+    nav a { color: var(--cuerpo); text-decoration: none; font-size: 14px; }
+    h1 { color: var(--tinta); font-size: 32px; line-height: 1.2; margin: 8px 0 12px; }
+    .lead { font-size: 17px; margin: 0 0 32px; max-width: 52ch; }
+    .card {
+      background: var(--superficie);
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .card h2 { color: var(--tinta); font-size: 18px; margin: 0 0 4px; }
+    .card p.sub { margin: 0 0 20px; font-size: 14px; }
+    label { display: block; font-size: 14px; color: var(--tinta); margin: 14px 0 6px; font-weight: 600; }
+    input, textarea {
+      width: 100%; padding: 10px 12px; font: inherit; color: var(--tinta);
+      background: #fff; border: 1px solid var(--borde); border-radius: 8px;
+    }
+    input:focus, textarea:focus { outline: 2px solid var(--marca); outline-offset: 1px; }
+    textarea { min-height: 110px; resize: vertical; }
+    button {
+      margin-top: 20px; width: 100%; padding: 11px 16px;
+      font: inherit; font-weight: 600; color: #fff; cursor: pointer;
+      background: var(--marca); border: 1px solid var(--marca-borde); border-radius: 8px;
+    }
+    button:hover { background: var(--marca-borde); }
+    footer { margin-top: 40px; font-size: 13px; color: var(--cuerpo); }
+    footer a { color: var(--marca); }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Coti<span>za</span></div>
+      <a href="/panel?usuario=ana">Panel del equipo</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <h1>Pide tu cotizacion sin vueltas</h1>
+    <p class="lead">
+      Cuentanos que necesitas y un miembro del equipo te contacta con un
+      presupuesto claro. Sin compromiso.
+    </p>
+
+    <section class="card">
+      <h2>Formulario de contacto</h2>
+      <p class="sub">Los tres campos son obligatorios.</p>
+
+      <!-- El formulario hace POST a /contacto. No cambies los name= de los campos. -->
+      <form method="post" action="/contacto">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required />
+
+        <label for="correo">Correo</label>
+        <input id="correo" name="correo" type="email" autocomplete="email" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" required placeholder="Que quieres cotizar?"></textarea>
+
+        <button type="submit">Enviar solicitud</button>
+      </form>
+    </section>
+
+    <footer>
+      Eres del equipo? Entra al <a href="/panel?usuario=ana">panel</a> para ver tus contactos.
+    </footer>
+  </main>
+</body>
+</html>

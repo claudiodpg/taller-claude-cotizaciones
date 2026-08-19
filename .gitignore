@@ -1,8 +1,1 @@
 node_modules/
-dist/
-*.sqlite
-*.sqlite-journal
-api/data/
-.DS_Store
-*.log
-.vite/

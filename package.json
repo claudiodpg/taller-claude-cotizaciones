@@ -1,28 +1,14 @@
 {
-  "name": "lab-cotizaciones",
-  "version": "0.1.0",
-  "private": true,
+  "name": "mini-lab-cotiza",
+  "version": "1.0.0",
+  "description": "Laboratorio minimo para el taller de Claude Code: landing con formulario de contacto, panel por usuario y una falla de control de acceso (IDOR) plantada a proposito.",
   "type": "module",
-  "description": "Laboratorio del Taller Claude v2 — Gestion de Cotizaciones y Seguimiento Comercial. Material didactico, NO produccion.",
-  "workspaces": [
-    "api",
-    "web"
-  ],
+  "private": true,
   "scripts": {
-    "dev": "concurrently -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
-    "dev:api": "npm run dev --workspace api",
-    "dev:web": "npm run dev --workspace web",
-    "build": "npm run build --workspace api && npm run build --workspace web",
-    "seed": "npm run seed --workspace api",
-    "test": "npm run test --workspace api",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "verify": "npm run typecheck && npm run test"
+    "dev": "node server.js",
+    "verify": "vitest run"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2",
-    "typescript": "^5.7.3"
-  },
-  "engines": {
-    "node": ">=20"
+    "vitest": "^2.1.0"
   }
 }
