@@ -1,5 +1,7 @@
 # Mini-lab "Cotiza" — laboratorio del taller de Claude Code
 
+> **Presentación del taller:** `Taller-Claude-Yuri.pptx` (en la raíz de este repo).
+
 Un laboratorio minimo y honesto para practicar el flujo del taller: una **landing**
 con un **formulario de contacto** que de verdad guarda lo que envias, y un **panel**
 donde un miembro del equipo entra eligiendo su usuario (no hay login real, es un
